@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import '../css/DeleteBlog.css'
+import styles from '../css/DeleteBlog.module.css'
+import '../css/Spinner.css'
 import type { AppDispatch, RootState } from '../state/store'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import supabase from '../client/supabase-client'
@@ -49,19 +50,19 @@ function DeleteBlog() {
                 return <p>{deleteBlog.error}</p>
             case "success":
                 return (
-                    <div className="card">
-                        <h2 className="title">Delete Blog Post</h2>
-                        <p className="description">Are you sure you want to delete this blog post titled <strong>"{deleteBlog.title}"</strong>? This action cannot be undone.</p>
+                    <div className={styles.card}>
+                        <h2 className={styles.title}>Delete Blog Post</h2>
+                        <p className={styles.description}>Are you sure you want to delete this blog post titled <strong>"{deleteBlog.title}"</strong>? This action cannot be undone.</p>
                     
-                        <p className="confirmation-text">Type <strong>DELETE</strong> to confirm.</p>
+                        <p className={styles.confirmation_text}>Type <strong>DELETE</strong> to confirm.</p>
                     
-                        <button className="delete-button" type="button" onClick={deleteBlogFunc}>Delete</button>
+                        <button className={styles.delete_button} type="button" onClick={deleteBlogFunc}>Delete</button>
                     </div>
                 )
         }
     }
 
-    return (<div><NavigationBar />{getProcess()}</div>)
+    return (<div><NavigationBar /><div className={styles.body}>{getProcess()}</div></div>)
 }
 
 export default DeleteBlog

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import '../css/Login.css'
+import styles from '../css/Login.module.css'
 import type { AppDispatch, RootState } from '../state/store'
 import { changeEmail, changePassword, changeError } from '../state/login-slice'
 import { useNavigate } from 'react-router-dom'
@@ -36,23 +36,27 @@ function Login() {
     }
 
     return (
-        <div className="login-container">
-            <form className="login-form">
-                <h2>Login</h2>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={loginState.email}
-                    onChange={(event) => dispatch(changeEmail(event.target.value))} />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={loginState.password}
-                    onChange={(event) => dispatch(changePassword(event.target.value))} />
-                <button type="button" onClick={login}>Login</button>
-                <p onClick={() => onNavigate("/register")}>Don't have an account yet? Register.</p>
-                <p style={{color: "red"}}>{loginState.error}</p>
-            </form>
+        <div className={styles.body}>
+            <div className={styles.login_container}>
+                <form className={styles.login_form}>
+                    <h2 className={styles.h2}>Login</h2>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className={styles.input}
+                        value={loginState.email}
+                        onChange={(event) => dispatch(changeEmail(event.target.value))} />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className={styles.input}
+                        value={loginState.password}
+                        onChange={(event) => dispatch(changePassword(event.target.value))} />
+                    <button type="button" className={styles.button} onClick={login}>Login</button>
+                    <p style={{color: "blue"}} onClick={() => onNavigate("/register")}>Don't have an account yet? Register.</p>
+                    <p style={{color: "red"}}>{loginState.error}</p>
+                </form>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../state/store'
-import '../css/CreateBlog.css'
+import styles from '../css/CreateBlog.module.css'
 import { changeDescription, changeTitle, changeError } from '../state/create-blog-slice'
 import { useNavigate } from 'react-router-dom'
 import supabase from '../client/supabase-client'
@@ -39,29 +39,33 @@ function CreateBlog() {
     return (
         <div>
             <NavigationBar />
-            <div className="form-container">
-                <h2>Create Blog</h2>
-                <form>
-                    <label htmlFor="title">Title</label>
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        placeholder="Enter title"
-                        value={createBlog.title}
-                        onChange={(event) => dispatch(changeTitle(event.target.value))} />
+            <div className={styles.body}>
+                <div className={styles.form_container}>
+                    <h2 className={styles.h2}>Create Blog</h2>
+                    <form>
+                        <label htmlFor="title" className={styles.label}>Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Enter title"
+                            className={styles.input}
+                            value={createBlog.title}
+                            onChange={(event) => dispatch(changeTitle(event.target.value))} />
 
-                    <label htmlFor="description">Description</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        placeholder="Enter description"
-                        value={createBlog.description}
-                        onChange={(event) => dispatch(changeDescription(event.target.value))}></textarea>
+                        <label htmlFor="description" className={styles.label}>Description</label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Enter description"
+                            className={styles.textarea}
+                            value={createBlog.description}
+                            onChange={(event) => dispatch(changeDescription(event.target.value))}></textarea>
 
-                    <button type="button" onClick={createBlogFunc}>Create</button>
-                    <p style={{color: "red"}}>{createBlog.error}</p>
-                </form>
+                        <button type="button" className={styles.button} onClick={createBlogFunc}>Create</button>
+                        <p style={{color: "red"}}>{createBlog.error}</p>
+                    </form>
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 {
-  "name": "my-app",
+  "name": "withcenter-project",
+  "homepage": "https://Brian-Serrano.github.io/WithCenter-Project/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,12 +8,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "@supabase/supabase-js": "^2.50.0",
     "@types/react-router-dom": "^5.3.3",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",

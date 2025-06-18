@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-//import '../css/Login.css'
+import styles from '../css/Login.module.css'
 import type { AppDispatch, RootState } from '../state/store'
 import { changeUsername, changePassword, changeEmail, changeAge, changeLocation, changeError } from '../state/register-slice'
 import supabase from '../client/supabase-client'
@@ -58,38 +58,45 @@ function Registration() {
     }
 
     return (
-        <div className="login-container">
-            <form className="login-form">
-                <h2>Register</h2>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={registerState.username}
-                    onChange={(event) => dispatch(changeUsername(event.target.value))} />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={registerState.password}
-                    onChange={(event) => dispatch(changePassword(event.target.value))} />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={registerState.email}
-                    onChange={(event) => dispatch(changeEmail(event.target.value))} />
-                <input
-                    type="number"
-                    placeholder="Age"
-                    value={registerState.age}
-                    onChange={(event) => dispatch(changeAge(parseInt(event.target.value)))} />
-                <input
-                    type="text"
-                    placeholder="Location"
-                    value={registerState.location}
-                    onChange={(event) => dispatch(changeLocation(event.target.value))} />
-                <button type="button" onClick={register}>Register</button>
-                <p onClick={() => onNavigate("/login")}>Already have an account? Log in.</p>
-                <p style={{color: "red"}}>{registerState.error}</p>
-            </form>
+        <div className={styles.body}>
+            <div className={styles.login_container}>
+                <form className={styles.login_form}>
+                    <h2 className={styles.h2}>Register</h2>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        className={styles.input}
+                        value={registerState.username}
+                        onChange={(event) => dispatch(changeUsername(event.target.value))} />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className={styles.input}
+                        value={registerState.password}
+                        onChange={(event) => dispatch(changePassword(event.target.value))} />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className={styles.input}
+                        value={registerState.email}
+                        onChange={(event) => dispatch(changeEmail(event.target.value))} />
+                    <input
+                        type="number"
+                        placeholder="Age"
+                        className={styles.input}
+                        value={registerState.age}
+                        onChange={(event) => dispatch(changeAge(parseInt(event.target.value)))} />
+                    <input
+                        type="text"
+                        placeholder="Location"
+                        className={styles.input}
+                        value={registerState.location}
+                        onChange={(event) => dispatch(changeLocation(event.target.value))} />
+                    <button type="button" className={styles.button} onClick={register}>Register</button>
+                    <p style={{color: "blue"}} onClick={() => onNavigate("/login")}>Already have an account? Log in.</p>
+                    <p style={{color: "red"}}>{registerState.error}</p>
+                </form>
+            </div>
         </div>
     )
 }

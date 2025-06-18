@@ -1,4 +1,4 @@
-body {
+.body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 2rem;
@@ -28,13 +28,13 @@ body {
   color: #555;
 }
 
-.confirmation-text {
+.confirmation_text {
   margin-bottom: 1rem;
   color: red;
   font-weight: bold;
 }
 
-.delete-button {
+.delete_button {
   background-color: #e74c3c;
   color: white;
   padding: 0.75rem 1.5rem;
@@ -45,6 +45,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
+.delete_button:hover {
   background-color: #c0392b;
 }

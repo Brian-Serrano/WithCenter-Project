@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import '../css/Logout.css'
+import styles from '../css/Logout.module.css'
 import NavigationBar from './NavigationBar'
 import supabase from '../client/supabase-client'
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,10 +26,12 @@ function Logout() {
     return (
         <div>
             <NavigationBar />
-            <div className="container">
-                <div className="text">Are you sure you want to logout?</div>
-                <button className="button" type="button" onClick={onLogout}>Yes</button>
-                <p style={{color: "red"}}>{logoutState.error}</p>
+            <div className={styles.body}>
+                <div className={styles.container}>
+                    <div className={styles.text}>Are you sure you want to logout?</div>
+                    <button className={styles.button} type="button" onClick={onLogout}>Yes</button>
+                    <p style={{color: "red"}}>{logoutState.error}</p>
+                </div>
             </div>
         </div>
     )
