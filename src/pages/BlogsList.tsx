@@ -18,15 +18,11 @@ function BlogsList() {
         const from = (blogsList.pageNumber - 1) * 6
         const to = from + 6 - 1
 
-        console.log(from + " - " + to)
-
         const { data, count, error } = await supabase
             .from("Blog")
             .select("id, title, description, created_at, user_id, User (username)", { count: "exact" })
             .order("created_at", { ascending: false })
             .range(from, to)
-
-        console.log(count)
 
         if (error) {
             return dispatch(onError(error.message))
@@ -45,7 +41,7 @@ function BlogsList() {
                         minute: "2-digit",
                         hour12: true,
                     }),
-                    created_by: d.User.username,
+                    created_by: d.User[0]?.username,
                     is_editable: d.user_id == currentUser,
                     user_id: d.user_id
                 }
