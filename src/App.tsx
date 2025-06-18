@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom"
+import { createHashRouter, redirect, RouterProvider } from "react-router-dom"
 import Registration from "./pages/Registration"
 import Login from "./pages/Login"
 import BlogsList from "./pages/BlogsList";
@@ -8,7 +8,7 @@ import DeleteBlog from "./pages/DeleteBlog";
 import Logout from "./pages/Logout";
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/register",
       element: <Registration />,
